@@ -9,6 +9,10 @@ namespace drawingSortingAlgorithms
 {
     class Sorting
     {
+        private static Label headerRef;
+        private static int intRef = 1;
+        private static Timer myTimer;
+
         private static Random random = new Random();
 
         public static void randomizeArray(int[] array, Panel panel)
@@ -42,9 +46,33 @@ namespace drawingSortingAlgorithms
             MessageBox.Show("Not implemented!");
         }
 
-        public static void quickSort(int[] integerArray, Panel panelSortingGraphics)
+        public static void quickSort(int[] integerArray, Panel panelSortingGraphics, Label header)
         {
-            MessageBox.Show("Not implemented!");
+            // i need a reference to the label i want to update (you ca just use the panel)
+            headerRef = header;
+
+            //create a timer
+            myTimer = new Timer();
+
+            //set timer event
+            myTimer.Tick += new EventHandler(TimerEventProcessor);
+
+            // Sets the timer interval to 5 seconds.
+            myTimer.Interval = 500;
+            
+            // start the timer
+            myTimer.Start();
+
+            
+        }
+
+        // the method that is executed every half second
+        private static void TimerEventProcessor(object sender, EventArgs e)
+        {
+            intRef++;
+            headerRef.Text = intRef.ToString();
+            myTimer.Enabled = true;
+   
         }
     }
 }

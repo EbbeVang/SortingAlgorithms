@@ -13,7 +13,7 @@ namespace drawingSortingAlgorithms
     public partial class Form1 : Form
     {
 
-        private int[] integerArray = new int[30];
+        private int[] integerArray = new int[20];
 
         public Form1()
         {
@@ -61,7 +61,7 @@ namespace drawingSortingAlgorithms
                     break;
                 case 4:
                     labelSortHeader.Text = "Quick sort";
-                    Sorting.quickSort(integerArray, panelSortingGraphics);
+                    Sorting.quickSort(integerArray, panelSortingGraphics, labelSortHeader);
                     break;
 
             }
